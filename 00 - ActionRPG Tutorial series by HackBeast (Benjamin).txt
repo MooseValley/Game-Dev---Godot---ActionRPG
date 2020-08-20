@@ -1,0 +1,124 @@
+https://www.youtube.com/c/uheartbeast/playlists
+
+https://github.com/uheartbeast/youtube-tutorials
+
+
+https://www.youtube.com/watch?v=mAbG8Oi-SvQ&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
+
+Godot Action RPG Series
+HeartBeast
+1 / 23
+34:07
+Now playing
+Make an Action RPG in Godot 3.2
+HeartBeast
+2
+17:43
+Now playing
+Make an Action RPG in Godot 3.2 (P2 | delta + smooth movement)
+HeartBeast
+3
+18:14
+Now playing
+Make an Action RPG in Godot 3.2 (P3 | collisions + move_and_slide)
+HeartBeast
+4
+17:28
+Now playing
+Make an Action RPG in Godot 3.2 (P4 | scenes + ysort node)
+HeartBeast
+5
+17:45
+Now playing
+Make an Action RPG in Godot 3.2 (P5 | AnimationPlayer)
+HeartBeast
+6
+24:52
+Now playing
+Make an Action RPG in Godot 3.2 (P6 | Animation in all directions with an AnimationTree)
+HeartBeast
+7
+22:42
+Now playing
+Make an Action RPG in Godot 3.2 (P7 | Background Grass and Dirt Path Autotile)
+HeartBeast
+8
+14:19
+Now playing
+Make an Action RPG in Godot 3.2 (P8 | Collisions with Autotiles)
+HeartBeast
+9
+25:45
+Now playing
+Make an Action RPG in Godot 3.2 (P9 | Attacking Animation + State Machines)
+HeartBeast
+10
+28:55
+Now playing
+Make an Action RPG in Godot 3.2 (P10 | Signals + Instancing Scenes in Code)
+HeartBeast
+11
+29:36
+Now playing
+Make an Action RPG in Godot 3.2 (P11 | Melee attacks with Hurtboxes and Hitboxes)
+HeartBeast
+12
+19:31
+Now playing
+Make an Action RPG in Godot 3.2 (P12 | Roll State)
+HeartBeast
+13
+21:12
+Now playing
+Make an Action RPG in Godot 3.2 (P13 | Knockback and Enemy Bat)
+HeartBeast
+14
+23:16
+Now playing
+Make an Action RPG in Godot 3.2 (P14 | Enemy Stats + Export Variables + Setget)
+HeartBeast
+15
+14:29
+Now playing
+Make an Action RPG in Godot 3.2 (P15 | Enemy Death Effect + Bug Fixes)
+HeartBeast
+16
+27:39
+Now playing
+Make an Action RPG in Godot 3.2 (P16 | Bat AI Start)
+HeartBeast
+17
+22:02
+Now playing
+Make an Action RPG in Godot 3.2 (P17 | Player Stats + Enemy Attack)
+HeartBeast
+18
+35:43
+Now playing
+Make an Action RPG in Godot 3.2 (P18 | Player Hearts UI)
+HeartBeast
+19
+16:56
+Now playing
+Make an Action RPG in Godot 3.2 (P19 | Enemy Soft Collisions + Profiling)
+HeartBeast
+20
+7:47
+Now playing
+Make an Action RPG in Godot 3.2 (P20 | Player Camera)
+HeartBeast
+21
+29:46
+Now playing
+Make an Action RPG in Godot 3.2 (P21 | Bat Wander State)
+HeartBeast
+22
+37:02
+Now playing
+Make an Action RPG in Godot 3.2 (P22 | Sounds + Hit Flash Effect)
+HeartBeast
+23
+13:36
+Now playing
+Make an Action RPG in Godot 3.2 (BONUS | Camera Limits + Hurtbox Bug Fix)
+HeartBeast
