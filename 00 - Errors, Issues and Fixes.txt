@@ -1,0 +1,22 @@
+
+https://www.youtube.com/watch?v=HIPUqqUEbfA&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=15
+Make an Action RPG in Godot 3.2 (P15 | Enemy Death Effect + Bug Fixes)
+
+
+Found the issue: in the player AnimationTree, in the Roll node, the top of the triangle was "Run Down" instead of "Roll Down".  Fixed this and all works OK.
+
+ISSUE:
+
+When I press "Z" to Roll Down, I lose control of the Fox - no other input keys work and he runs down and collides with objects and stays there, or runs off the bottom of the screen.
+All 7 (seven) other Roll directions work fine.  He does NOT roll, he just runs.
+
+MoosesValley
+02:00: got to here ... and my Fox now runs off the bottom of the screen whenever I press Roll when facing down ...  been through the code ... back through videos and back through my code and I cannot see how or why this is happening.  Added print statements to my code ...  will report back when I find the issue, it might help someone else track down any issues they may have.
+
+Things I tried:
+* Checked, Double checked, triple checked code
+* Checked, Double checked, triple checked Player AnimationTree all states ...
+* Checked code against Ben's Github ... all seems OK, but Ben's code is to the end of the video series, and we are only half way through, so a lot has changed in Ben's code since video 15
+* Added print statements to try and see what's going on ...
+* Using another key other than Z for user input for roll down
+* Delete Roll_Down animation and re-create it.

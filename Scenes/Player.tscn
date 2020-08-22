@@ -444,7 +444,7 @@ blend_mode = 1
 animation = "Roll_Left"
 
 [sub_resource type="AnimationNodeAnimation" id=26]
-animation = "Run_Down"
+animation = "Roll_Down"
 
 [sub_resource type="AnimationNodeAnimation" id=27]
 animation = "Roll_Right"
@@ -554,10 +554,11 @@ anims/Run_Up = SubResource( 14 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 41 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 42 )
 parameters/Attack/blend_position = Vector2( 0.0374415, 0.935821 )
 parameters/Idle/blend_position = Vector2( -0.48986, 0.0258621 )
-parameters/Roll/blend_position = Vector2( -0.985959, -0.0361502 )
+parameters/Roll/blend_position = Vector2( -0.00936037, 0.341379 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
