@@ -1,10 +1,24 @@
 extends KinematicBody2D
 
-const FRICTION = 200
+enum {IDLE, WANDER, CHASE}
 
-onready var stats = $StatsNode
+const EnemyDeathEffect = preload("res://Scenes/EnemyDeathEffect.tscn")
 
+export var ACCELERATION  = 300
+export var MAX_SPEED     = 50
+export var FRICTION      = 200
+
+onready var stats               = $StatsNode
+onready var playerDetectionZone = $PlayerDetectionZone
+onready var animatedSprite      = $AnimatedSprite
+onready var enemyHurtbox        = $Hurtbox
+
+
+var velocity  = Vector2.ZERO
 var knockBack = Vector2.ZERO
+var state = IDLE
+
+
 
 func _ready():
 	pass
@@ -12,7 +26,28 @@ func _ready():
 func _physics_process(delta):
 	knockBack = knockBack.move_toward(Vector2.ZERO, FRICTION * delta)
 	knockBack = move_and_slide(knockBack)
+
+	match state:
+		IDLE: 
+			velocity = velocity.move_toward (Vector2.ZERO, FRICTION * delta)
+			seek_player()
+		WANDER:
+			pass
+		CHASE:
+			var player = playerDetectionZone.player
+			if (player != null):
+				var directionToPlayer = (player.global_position - global_position).normalized()
+				velocity = velocity.move_toward (directionToPlayer * MAX_SPEED, ACCELERATION * delta)
+			else:
+				state = IDLE
+				
+	animatedSprite.flip_h = velocity.x < 0
 	
+	velocity = move_and_slide(velocity)
+
+func seek_player():
+	if playerDetectionZone.can_see_player():
+		state = CHASE
 	
 func _on_Hurtbox_area_entered(area):
 	#var knockBackVector = area.knockBack
@@ -31,7 +66,14 @@ func _on_Hurtbox_area_entered(area):
 	# damageDone from the Hitbox script
 	#stats.healthRemaining -= 1
 	stats.healthRemaining -= area.damageDone
+	enemyHurtbox.create_hit_effect()
 
 
 func _on_StatsNode_no_health():
 	queue_free()
+	
+	# Add the EnemyDeathEffect to the same tree level as the Enemy
+	var enemyDeathEffect = EnemyDeathEffect.instance()
+	get_parent().add_child(enemyDeathEffect)
+	enemyDeathEffect.global_position = global_position
+	

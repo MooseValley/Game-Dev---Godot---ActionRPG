@@ -1,7 +1,7 @@
 extends Node
 
 export (int)   var maxHealth    = 1
-export (float) var maxHitDamage = 1
+#export (float) var maxHitDamage = 1
 
 onready var healthRemaining = maxHealth  setget set_health
 

@@ -4,12 +4,16 @@ const ACCELERATION = 500
 const MAX_SPEED    = 80
 const ROLL_SPEED   = 120
 const FRICTION     = 500
+const INVINCIBLE_DURATION = 0.5
 
 enum {MOVE, ROLL, ATTACK}
 
 var state       = MOVE
 var velocity    = Vector2.ZERO
-var rollVector  = Vector2.LEFT
+var rollVector  = Vector2.DOWN
+
+# PlayerStats is autoloaded - see project Settings -> Autoload tab
+var stats       = PlayerStatsNode
 
 
 #var animationPlayer = null
@@ -18,11 +22,19 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree   = $AnimationTree
 onready var animationState  = animationTree.get("parameters/playback")
 onready var swordHitBox     = $HitboxPivot/SwordHitbox
-
+onready var playerHurtbox   = $Hurtbox
  
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# initialise Idle, Run, Attack, and Roll to all be to the the same direction - as per rollVector..
+	animationTree.set ("parameters/Idle/blend_position",    rollVector)
+	animationTree.set ("parameters/Run/blend_position",     rollVector)
+	animationTree.set ("parameters/Attack/blend_position",  rollVector)
+	animationTree.set ("parameters/Roll/blend_position",    rollVector)
+
+	stats.connect ("no_health", self, "queue_free")
+	
 	# set the default animation state
 	animationTree.active = true
 	animationState.travel("Idle")
@@ -123,3 +135,9 @@ func attack_animation_finished():
 	# Called in the Animation Player when the attack animation is finished.
 	state = MOVE
 	
+
+
+func _on_Hurtbox_area_entered(area):
+	stats.healthRemaining -= 1
+	playerHurtbox.start_invincibility (INVINCIBLE_DURATION)
+	playerHurtbox.create_hit_effect()
