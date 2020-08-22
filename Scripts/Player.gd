@@ -2,36 +2,48 @@ extends KinematicBody2D
 
 const ACCELERATION = 500
 const MAX_SPEED    = 80
+const ROLL_SPEED   = 120
 const FRICTION     = 500
 
 enum {MOVE, ROLL, ATTACK}
 
-var state = MOVE
-var velocity = Vector2.ZERO
+var state       = MOVE
+var velocity    = Vector2.ZERO
+var rollVector  = Vector2.LEFT
+
+
 #var animationPlayer = null
 #OR:
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree   = $AnimationTree
 onready var animationState  = animationTree.get("parameters/playback")
+onready var swordHitBox     = $HitboxPivot/SwordHitbox
 
+ 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# set the default animation state
 	animationTree.active = true
 	animationState.travel("Idle")
+	swordHitBox.knockBackVector = rollVector
 #	animationPlayer = $AnimationPlayer
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# This function is called every frame, as often as possible.  delta is NOT constant !
 #func _process(delta):
 #	pass
 
+# delta is constant
+# If you aren't doing physics, just use _process ()
+#move_and_slide uses physics -> probably best to use _physics_process()
 func _physics_process(delta):
+#func _process(delta):
 	if (state == MOVE):
 		move_state(delta)
 	elif (state == ROLL):
-		pass
+		roll_state(delta)
 	elif (state == ATTACK):
 		attack_state(delta)
 	
@@ -56,6 +68,8 @@ func move_state(delta):
 	
 	if (inputVector != Vector2.ZERO):
 		# Player is moving / accelerating
+		rollVector = inputVector
+		swordHitBox.knockBackVector = rollVector
 
 		#if (inputVector.x > 0):
 		#	animationPlayer.play("Run_Right")
@@ -67,6 +81,7 @@ func move_state(delta):
 		animationTree.set ("parameters/Idle/blend_position",    inputVector)
 		animationTree.set ("parameters/Run/blend_position",     inputVector)
 		animationTree.set ("parameters/Attack/blend_position",  inputVector)
+		animationTree.set ("parameters/Roll/blend_position",    inputVector)
 		
 		animationState.travel("Run")
 
@@ -78,16 +93,32 @@ func move_state(delta):
 
 		animationState.travel("Idle")
 		
-	velocity = move_and_slide (velocity)
-	
+	move()
+
+	if Input.is_action_just_pressed("roll"):
+		state = ROLL
+			
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
-	
+
+func roll_state(delta):
+	velocity = rollVector * ROLL_SPEED
+	animationState.travel("Roll")
+	move()
+		
 func attack_state(delta):
 	#animationPlayer.play ("Attack_Right")
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
-		
+
+func move():
+	velocity = move_and_slide (velocity)
+	
+func roll_animation_finished():
+	# Called in the Animation Player when the attack animation is finished.
+	velocity = velocity * 0.8
+	state = MOVE
+	
 func attack_animation_finished():
 	# Called in the Animation Player when the attack animation is finished.
 	state = MOVE
