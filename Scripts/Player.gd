@@ -108,6 +108,9 @@ func move_state(delta):
 	move()
 
 	if Input.is_action_just_pressed("roll"):
+		# For testing of HealthUI
+		#PlayerStatsNode.maxHealth -= 1
+	
 		state = ROLL
 			
 	if Input.is_action_just_pressed("attack"):
@@ -128,6 +131,7 @@ func move():
 	
 func roll_animation_finished():
 	# Called in the Animation Player when the attack animation is finished.
+	
 	velocity = velocity * 0.8
 	state = MOVE
 	

@@ -7,12 +7,13 @@ const EnemyDeathEffect = preload("res://Scenes/EnemyDeathEffect.tscn")
 export var ACCELERATION  = 300
 export var MAX_SPEED     = 50
 export var FRICTION      = 200
+export var SOFT_COLLISSION_PUSH_BACK  = 400
 
 onready var stats               = $StatsNode
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var animatedSprite      = $AnimatedSprite
 onready var enemyHurtbox        = $Hurtbox
-
+onready var softCollission      = $SoftCollission
 
 var velocity  = Vector2.ZERO
 var knockBack = Vector2.ZERO
@@ -43,6 +44,9 @@ func _physics_process(delta):
 				
 	animatedSprite.flip_h = velocity.x < 0
 	
+	if (softCollission.is_colliding() == true):
+		velocity += softCollission.get_push_vector() * delta * SOFT_COLLISSION_PUSH_BACK
+		
 	velocity = move_and_slide(velocity)
 
 func seek_player():
