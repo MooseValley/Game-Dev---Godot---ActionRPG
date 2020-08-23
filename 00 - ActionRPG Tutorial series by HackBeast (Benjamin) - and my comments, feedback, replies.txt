@@ -1,0 +1,117 @@
+HackBeast's Make an Action RPG in Godot - videos 01-06
+
+https://www.youtube.com/c/uheartbeast/playlists
+
+https://github.com/uheartbeast/youtube-tutorials
+
+1-Bit Godot Course - $147 US - currently $97
+6+ hours of video content, 75+ lectures, 4 main games.
+https://www.heartgamedev.com/1-bit-godot-course-youtube
+
+
+https://www.youtube.com/watch?v=mAbG8Oi-SvQ&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
+
+Make an Action RPG in Godot 3.2
+Make an Action RPG in Godot 3.2 (P02 | delta + smooth movement)
+Make an Action RPG in Godot 3.2 (P03 | collisions + move_and_slide)
+Make an Action RPG in Godot 3.2 (P04 | scenes + ysort node)
+Make an Action RPG in Godot 3.2 (P05 | AnimationPlayer)
+Make an Action RPG in Godot 3.2 (P06 | Animation in all directions with an AnimationTree)
+Make an Action RPG in Godot 3.2 (P07 | Background Grass and Dirt Path Autotile)
+Make an Action RPG in Godot 3.2 (P08 | Collisions with Autotiles)
+Make an Action RPG in Godot 3.2 (P09 | Attacking Animation + State Machines)
+Make an Action RPG in Godot 3.2 (P10 | Signals + Instancing Scenes in Code)
+Make an Action RPG in Godot 3.2 (P11 | Melee attacks with Hurtboxes and Hitboxes)
+Make an Action RPG in Godot 3.2 (P12 | Roll State)
+Make an Action RPG in Godot 3.2 (P13 | Knockback and Enemy Bat)
+Make an Action RPG in Godot 3.2 (P14 | Enemy Stats + Export Variables + Setget)
+Make an Action RPG in Godot 3.2 (P15 | Enemy Death Effect + Bug Fixes)
+Make an Action RPG in Godot 3.2 (P16 | Bat AI Start)
+Make an Action RPG in Godot 3.2 (P17 | Player Stats + Enemy Attack)
+Make an Action RPG in Godot 3.2 (P18 | Player Hearts UI)
+Make an Action RPG in Godot 3.2 (P19 | Enemy Soft Collisions + Profiling)
+Make an Action RPG in Godot 3.2 (P20 | Player Camera)
+Make an Action RPG in Godot 3.2 (P21 | Bat Wander State)
+Make an Action RPG in Godot 3.2 (P22 | Sounds + Hit Flash Effect)
+Make an Action RPG in Godot 3.2 (ZZ BONUS | Camera Limits + Hurtbox Bug Fix)
+
+
+
+
+https://www.youtube.com/watch?v=Z9aR9IiiHT8&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=6
+Make an Action RPG in Godot 3.2 (P6 | Animation in all directions with an AnimationTree)
+MoosesValley
+2 days ago
+Great videos Ben.  That 0.1 trick at the end is GOLD !
+
+https://www.youtube.com/watch?v=RPgTlxb7Bno&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=8
+Make an Action RPG in Godot 3.2 (P8 | Collisions with Autotiles)
+MoosesValley
+2 days ago
+09:14: "I haven't ever contributed to Godot before."
+Not true.  You have convinced me to give Godot another look ... after giving it a darn good try, hitting bugs and issues, and virtually giving up on it 12+ months ago.  And I'm liking the new Godot a lot better this time round - all thanks to you !  ??  +1 LIKE on all your videos, and +1 SUBSCRIBE.
+
+https://www.youtube.com/watch?v=1mI04gPhd3E&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=10
+Make an Action RPG in Godot 3.2 (P10 | Signals + Instancing Scenes in Code)
+MoosesValley
+1 day ago
+28:10: Recommend you make GrassEffect an onready var at class level so that the scene is not loaded from file every time.
+onready var GrassEffect = load("res://Scenes/GrassEffect.tscn")
+
+MoosesValley
+1 day ago
+Make sure you write "attack" in lower case in the Grass.dg script or the grass will NOT dissappear when you attack:
+func _process(delta):
+	if Input.is_action_just_pressed("attack"):
+		queue_free()
+
+https://www.youtube.com/watch?v=HIPUqqUEbfA&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=15
+Make an Action RPG in Godot 3.2 (P15 | Enemy Death Effect + Bug Fixes)
+MoosesValley
+23 hours ago
+02:00: got to here ... and my Fox now runs off the bottom of the screen whenever I press Roll when facing down ...  been through the code ... back through videos and back through my code and I cannot see how or why this is happening.  Added print statements to my code ...  will report back when I find the issue, it might help someone else track down any issues they may have.
+
+Update:
+MoosesValley
+16 hours ago
+Found the issue: in the player AnimationTree, in the Roll node, the top of the triangle was "Run Down" instead of "Roll Down".  Fixed this and all works OK.
+
+
+
+https://www.youtube.com/watch?v=MA7jSbXfS34&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=20
+Make an Action RPG in Godot 3.2 (P20, Player Camera)
+MoosesValley
+Sun, 23-Aug-2020, 10:06 AM
+I've figured out a way to do the Camera2D / RemoteTransform2D generically - so it will work for the player in any Level scene.
+(Ben has probably already done this in future videos ??  I've only watched to this video so far)
+(1). Add the Camera2D to the scene as shown in the video
+(2). Add the RemoteTransform2D  to the player as shown in the video
+(3). Add a script to the RemoteTransform2D and add this code:
+func _ready():
+	var main = get_tree().current_scene
+	var camera2D = main.get_node("Camera2D")
+	var fullPathName = "/root/" + main.name + "/" + camera2D.name
+	#print(fullPathName)  # To check.  This will give you something like:  /root/Level_01/Camera2D, etc
+	set_remote_node (fullPathName)
+No doubt there's probably even easier ways to do this, and someone will be along shortly to point this out.  Anyway, hopefully this helps others out there.
+
+https://www.youtube.com/watch?v=Ot9M0TlxApU&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=22
+Make an Action RPG in Godot 3.2 (P22 | Sounds + Hit Flash Effect)
+MoosesValley
+Sun, 23-Aug-2020, 12:33 PM
+Awesome tutorials, thank you Ben !!
+
+https://www.youtube.com/watch?v=3Z7oV0X5vE8&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=23
+MoosesValley
+Sun, 23-Aug-2020, 01:28 PM
+Extremely helpful video series Ben, you explain things well.  Planning to continue on and do your 1-But course in the near future.  Got to strike while the iron is hot. !  +1 LIKE to every video.
+
+https://www.youtube.com/watch?v=3Z7oV0X5vE8&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=23
+Make an Action RPG in Godot 3.2 (BONUS | Camera Limits + Hurtbox Bug Fix)
+MoosesValley
+Sun, 23-Aug-2020, 12:45 PM
+@Hons Hon Central "Holy crap it is expensive."
+Not at all.  It has 16+ hours of video content, more than 75 lectures, 4 main games sections ...  it's cheap as far as courses go - was $147 but on sale now for $97.  If it wasn't for people like Ben producing free YouTube videos and free and paid courses, then imagine how much harder Godot would be to learn.  You could be trying for hours (or more !) to figure some of the stuff out that he has shown us in short videos.
+
+
+EOF.

@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
-const ACCELERATION = 500
-const MAX_SPEED    = 80
-const ROLL_SPEED   = 120
-const FRICTION     = 500
-const INVINCIBLE_DURATION = 0.5
+const PLAYER_HURT_SOUND   = preload("res://Scenes/PlayerHurtSound.tscn")
+const ACCELERATION        = 500
+const MAX_SPEED           = 80
+const ROLL_SPEED          = 120
+const FRICTION            = 500
+const INVINCIBLE_DURATION = 0.6
 
 enum {MOVE, ROLL, ATTACK}
 
@@ -18,12 +19,12 @@ var stats       = PlayerStatsNode
 
 #var animationPlayer = null
 #OR:
-onready var animationPlayer = $AnimationPlayer
-onready var animationTree   = $AnimationTree
-onready var animationState  = animationTree.get("parameters/playback")
-onready var swordHitBox     = $HitboxPivot/SwordHitbox
-onready var playerHurtbox   = $Hurtbox
- 
+onready var animationPlayer      = $AnimationPlayer
+onready var animationTree        = $AnimationTree
+onready var animationState       = animationTree.get("parameters/playback")
+onready var swordHitBox          = $HitboxPivot/SwordHitbox
+onready var playerHurtbox        = $Hurtbox
+onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -57,18 +58,18 @@ func _physics_process(delta):
 	if (state == MOVE):
 		move_state(delta)
 	elif (state == ROLL):
-		roll_state(delta)
+		roll_state()
 	elif (state == ATTACK):
-		attack_state(delta)
+		attack_state()
 	
 	# OR use a match - like a switch / case stateement.
 	# match state:
 	# 	MOVE:
 	#		move_state(delta)
 	#	ROLL:
-	#		pass
+	#		roll_state()
 	#	ATTACK:
-	#		attack_state(delta)
+	#		attack_state()
 	
 
 func move_state(delta):	
@@ -118,12 +119,12 @@ func move_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 
-func roll_state(delta):
+func roll_state():
 	velocity = rollVector * ROLL_SPEED
 	animationState.travel("Roll")
 	move()
 		
-func attack_state(delta):
+func attack_state():
 	#animationPlayer.play ("Attack_Right")
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
@@ -144,6 +145,21 @@ func attack_animation_finished():
 
 
 func _on_Hurtbox_area_entered(area):
-	stats.healthRemaining -= 1
+	#stats.healthRemaining -= 1
+	stats.healthRemaining -= area.damageDone
 	playerHurtbox.start_invincibility (INVINCIBLE_DURATION)
 	playerHurtbox.create_hit_effect()
+	
+	var playerHurtSound = PLAYER_HURT_SOUND.instance()
+	get_tree().current_scene.add_child (playerHurtSound)
+	
+
+
+func _on_Hurtbox_invinciblity_started():
+	blinkAnimationPlayer.play("Start")
+	pass # Replace with function body.
+
+
+func _on_Hurtbox_invinciblity_ended():
+	blinkAnimationPlayer.play("Stop")
+	pass # Replace with function body.
