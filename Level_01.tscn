@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Scenes/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -520,6 +520,8 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=54]
+
 [node name="Level_01" type="Node2D"]
 __meta__ = {
 "_edit_lock_": true
@@ -559,6 +561,9 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -6
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 74, 63 )
+
+[node name="AnimationTree" parent="YSort/Player" index="4"]
+parameters/playback = SubResource( 54 )
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -620,8 +625,19 @@ position = Vector2( 263, 90 )
 [node name="EnemyBat2" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 168, 138 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 8 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
 margin_left = 4.0
 margin_top = 3.0
 margin_right = 183.0
 margin_bottom = 14.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+__meta__ = {
+"_editor_description_": "Add Camera to World / Level scene and then "
+}
+
+[editable path="YSort/Player"]

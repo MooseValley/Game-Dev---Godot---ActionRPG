@@ -27,6 +27,8 @@ onready var playerHurtbox   = $Hurtbox
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
+	
 	# initialise Idle, Run, Attack, and Roll to all be to the the same direction - as per rollVector..
 	animationTree.set ("parameters/Idle/blend_position",    rollVector)
 	animationTree.set ("parameters/Run/blend_position",     rollVector)
