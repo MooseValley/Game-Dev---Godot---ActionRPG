@@ -9,6 +9,9 @@ https://github.com/uheartbeast/youtube-tutorials
 https://www.heartgamedev.com/1-bit-godot-course-youtube
 
 
+**********************************************************************
+23 Videos
+**********************************************************************
 https://www.youtube.com/watch?v=mAbG8Oi-SvQ&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
 
 Make an Action RPG in Godot 3.2
@@ -33,9 +36,19 @@ Make an Action RPG in Godot 3.2 (P19 | Enemy Soft Collisions + Profiling)
 Make an Action RPG in Godot 3.2 (P20 | Player Camera)
 Make an Action RPG in Godot 3.2 (P21 | Bat Wander State)
 Make an Action RPG in Godot 3.2 (P22 | Sounds + Hit Flash Effect)
-Make an Action RPG in Godot 3.2 (ZZ BONUS | Camera Limits + Hurtbox Bug Fix)
+Make an Action RPG in Godot 3.2 (P23 BONUS | Camera Limits + Hurtbox Bug Fix)
 
 
+**********************************************************************
+My Comments, Feedback, Replies
+**********************************************************************
+
+https://www.youtube.com/watch?v=mAbG8Oi-SvQ&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=1
+Make an Action RPG in Godot 3.2
+MoosesValley
+Sun, 23-Aug-2020, 02:29 PM
+Just finished the entire video series - up to and including the Bonus video (23).  Special thanks to Ben for doing such a stellar job and producing such engaging videos.  Working through these was like reading Lord of the Rings for the first time ... once I started I just could not stop.   It was so much fun !  I'm an old programmer with over 4 decades of experience, and programming is my "happy place" !  Thank you Ben !  Am planning to continue on and do your 1-But course in the near future.  Got to strike while the iron is hot. !   I clicked +1 LIKE for every video.   One final thing that may help others .... where I've found issues / traps that caught me, I've added comments below the video to explain what happened and how to fix.  And I've uploaded ZIP / 7z files of the project every 3 videos or so to my Github and uploaded as ZIP / 7z files, and my final files are there as well ... so if anyone is stuck, cannot proceed past a certain video, cannot fix an error, then maybe my code might help get you going again:
+https://github.com/MooseValley/Game-Dev---Godot---ActionRPG
 
 
 https://www.youtube.com/watch?v=Z9aR9IiiHT8&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=6
@@ -44,12 +57,14 @@ MoosesValley
 2 days ago
 Great videos Ben.  That 0.1 trick at the end is GOLD !
 
+
 https://www.youtube.com/watch?v=RPgTlxb7Bno&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=8
 Make an Action RPG in Godot 3.2 (P8 | Collisions with Autotiles)
 MoosesValley
 2 days ago
 09:14: "I haven't ever contributed to Godot before."
 Not true.  You have convinced me to give Godot another look ... after giving it a darn good try, hitting bugs and issues, and virtually giving up on it 12+ months ago.  And I'm liking the new Godot a lot better this time round - all thanks to you !  ??  +1 LIKE on all your videos, and +1 SUBSCRIBE.
+
 
 https://www.youtube.com/watch?v=1mI04gPhd3E&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=10
 Make an Action RPG in Godot 3.2 (P10 | Signals + Instancing Scenes in Code)
@@ -65,13 +80,15 @@ func _process(delta):
 	if Input.is_action_just_pressed("attack"):
 		queue_free()
 
+
 https://www.youtube.com/watch?v=HIPUqqUEbfA&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=15
 Make an Action RPG in Godot 3.2 (P15 | Enemy Death Effect + Bug Fixes)
 MoosesValley
 23 hours ago
 02:00: got to here ... and my Fox now runs off the bottom of the screen whenever I press Roll when facing down ...  been through the code ... back through videos and back through my code and I cannot see how or why this is happening.  Added print statements to my code ...  will report back when I find the issue, it might help someone else track down any issues they may have.
 
-Update:
+https://www.youtube.com/watch?v=HIPUqqUEbfA&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=15
+Make an Action RPG in Godot 3.2 (P15 | Enemy Death Effect + Bug Fixes)
 MoosesValley
 16 hours ago
 Found the issue: in the player AnimationTree, in the Roll node, the top of the triangle was "Run Down" instead of "Roll Down".  Fixed this and all works OK.
@@ -95,16 +112,20 @@ func _ready():
 	set_remote_node (fullPathName)
 No doubt there's probably even easier ways to do this, and someone will be along shortly to point this out.  Anyway, hopefully this helps others out there.
 
+
 https://www.youtube.com/watch?v=Ot9M0TlxApU&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=22
 Make an Action RPG in Godot 3.2 (P22 | Sounds + Hit Flash Effect)
 MoosesValley
 Sun, 23-Aug-2020, 12:33 PM
 Awesome tutorials, thank you Ben !!
 
+
 https://www.youtube.com/watch?v=3Z7oV0X5vE8&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=23
+Make an Action RPG in Godot 3.2 (BONUS | Camera Limits + Hurtbox Bug Fix)
 MoosesValley
 Sun, 23-Aug-2020, 01:28 PM
 Extremely helpful video series Ben, you explain things well.  Planning to continue on and do your 1-But course in the near future.  Got to strike while the iron is hot. !  +1 LIKE to every video.
+
 
 https://www.youtube.com/watch?v=3Z7oV0X5vE8&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&index=23
 Make an Action RPG in Godot 3.2 (BONUS | Camera Limits + Hurtbox Bug Fix)

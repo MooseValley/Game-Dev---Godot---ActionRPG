@@ -62,7 +62,7 @@ resource_name = "Start"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/0/path = NodePath("../EnemyBat/EnemyBat9:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -77,7 +77,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=13]
 resource_name = "Stop"
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/0/path = NodePath("../EnemyBat/EnemyBat9:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -98,7 +98,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -12 )
 frames = SubResource( 7 )
 animation = "Fly"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Shadow" type="Sprite" parent="."]

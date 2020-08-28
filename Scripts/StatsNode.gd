@@ -21,6 +21,7 @@ func _ready():
 #	if (healthRemaining < 0):
 #		emit_signal ("no_health")
 
+
 func set_max_health	(value):
 	maxHealth = max (value, 1)
 	self.healthRemaining = min (healthRemaining, maxHealth)
